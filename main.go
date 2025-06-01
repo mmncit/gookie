@@ -17,7 +17,7 @@ func main() {
 	}
 	app.Logger.Println("Application started successfully")
 
-	
+
 	http.HandleFunc("/health", HealthCheckHandler)
 
 	// Create a new HTTP server with custom timeouts
@@ -38,7 +38,5 @@ func main() {
 }
 
 func HealthCheckHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Health Check OK")
-	w.WriteHeader(http.StatusOK)
-	w.Write([]byte("OK"))
+	fmt.Fprintf(w, "OK")
 }
