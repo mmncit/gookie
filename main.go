@@ -7,6 +7,7 @@ import (
 	"time"
 
 	"github.com/mmncit/gookie/internal/app"
+	"github.com/mmncit/gookie/internal/routes"
 )
 
 
@@ -24,11 +25,12 @@ func main() {
 	app.Logger.Println("Application started successfully")
 
 
-	http.HandleFunc("/health", HealthCheckHandler)
-
+	
+	routes := routes.SetupRoutes(app)
 	
 	server := &http.Server{
 		Addr:    fmt.Sprintf(":%d", port),
+		Handler: routes,
 		IdleTimeout: time.Minute,
 		ReadTimeout:  10 * time.Second,
 		WriteTimeout: 30 * time.Second,
@@ -44,6 +46,3 @@ func main() {
 	}
 }
 
-func HealthCheckHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "OK")
-}
