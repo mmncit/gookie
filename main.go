@@ -6,12 +6,15 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/joho/godotenv"
 	"github.com/mmncit/gookie/internal/app"
 	"github.com/mmncit/gookie/internal/routes"
 )
 
 
 func main() {
+
+	_ = godotenv.Load()
 
 	var port int
 	flag.IntVar(&port, "port", 8080, "Port to run the server on")
