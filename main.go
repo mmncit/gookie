@@ -22,6 +22,9 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+
+	defer app.DB.Close()
+
 	app.Logger.Println("Application started successfully")
 
 

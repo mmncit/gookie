@@ -51,6 +51,10 @@ curl -X POST http://localhost:8080/events
 curl http://localhost:8080/events/2
 ```
 
+```bash
+docker compose up --build
+```
+
 ---
 
 ## 📄 License
