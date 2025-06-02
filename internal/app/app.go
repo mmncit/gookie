@@ -8,6 +8,7 @@ import (
 	"os"
 
 	api "github.com/mmncit/gookie/internal/api/handlers"
+	"github.com/mmncit/gookie/internal/migrations"
 	"github.com/mmncit/gookie/store"
 )
 
@@ -24,6 +25,11 @@ func NewApplication() (*Application, error) {
 	pgDB, err := store.Open()
 	if err != nil {
 		return nil, err
+	}
+
+	err = store.MigrateFS(pgDB, migrations.FS, ".")
+	if err != nil {
+		panic(err)
 	}
 
 
